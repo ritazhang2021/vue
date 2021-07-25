@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-model代表input元素跟vue中的num数据模型绑定-->
+        <input type="text" v-model="num">
+        <h2>
+            <!-- 从vue数据区取值 -->
+            {{name}}，有{{num}}个人为他点赞。
+        </h2>
+    </div>
+
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 创建 vue 实例
+        let vm = new Vue({
+            el: "#app", // el 即 element，该 vue 实例要渲染的页面元素
+            data: { // 渲染页面需要的数据
+                name: "Rita",
+                num: 5,
+            }
+        });
+    </script>
+
+</body>
+
+</html>

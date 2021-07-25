@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 刚才的 v-text、v-html、v-bind 可以看做是单向绑定，数据影响了视图渲染，但是反过来就不
+    行。接下来学习的 v-model 是双向绑定，视图（View）和模型（Model）之间会互相影响。
+    既然是双向绑定，一定是在视图中可以修改数据，这样就限定了视图的元素类型。目前
+    v-model 的可使用元素有：
+    - input
+    - select
+    - textarea
+    - checkbox
+    - radio
+    - components（Vue 中的自定义组件）
+    基本上除了最后一项，其它都是表单的输入项。
+     多个`CheckBox`对应一个 model 时，model 的类型是一个数组，单个 checkbox 值默认是
+    boolean 类型
+     radio 对应的值是 input 的 value 值
+     `text` 和`textarea` 默认对应的 model 是字符串
+     `select`单选对应字符串，多选对应也是数组
+
+-->
+
+    <div id="app">
+        <input type="checkbox" v-model="language" value="Java" />Java<br />
+        <input type="checkbox" v-model="language" value="PHP" />PHP<br />
+        <input type="checkbox" v-model="language" value="Swift" />Swift<br />
+        <h1>
+            你选择了：{{language.join(',')}}
+        </h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                language: []
+            }
+        })
+    </script>
+
+</body>
+
+</html>

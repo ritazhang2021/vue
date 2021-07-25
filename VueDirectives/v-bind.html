@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给html标签属性绑定值</title>
+</head>
+
+<body>
+   
+
+    
+    <div id="app">
+        <!-- 1）、绑定 超链接 -->
+        <!-- 链接跟vue实例绑定，跟哪个属性绑定就填哪个属性 -->
+        <a v-bind:href="link">go to baidu</a>
+
+         </br>
+
+        <!-- 2）、绑定 class , style-->
+        <!-- class是动态的， 需要写一个对象，active，相当于class中有一个active，
+        'text-danger'中间有特殊字符，需要加单引号或者驼峰命名，当条件为true时，显示这两个class属性，不为true不显示
+        以前的样式写法style="color: rebeccapurple;font-size: 90px;改变后把它变成一个对象,注意之前的分号变逗号
+
+        `v-bind:style` 的对象语法十分直观，看着非常像 CSS，但其实是一个 JavaScript 对象。style
+        属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，这种方式记得用单引号括起
+        来) 来命名。
+        例如：font-size->fontSize
+    
+    -->
+        <span v-bind:class="{ active: isActive, 'text-danger': hasError }" 
+        v-bind:style="{color: color, fontSize: size}">Check me</span>
+
+        <!-- 可以缩写成 :style="{color: color, fontSize: size}"-->
+        </br>
+        <!-- 3）、 绑定其他任意属性 -->
+        <span v-bind:user="userName">绑定其他任意属性</span>
+
+        
+
+    </div>    
+    
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                link:"http://www.baidu.com",
+                isActive: true,
+                hasError: true,
+                color:'rebeccapurple',
+                size:'36px',
+                userName:'Rita'
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

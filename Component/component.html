@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <button v-on:click="count++">我被点击了 {{count}} 次</button>
+
+        <!-- 全局组件， 这些都是独立统计的 -->
+
+        <counter></counter>
+        <counter></counter>
+        <counter></counter>
+        <counter></counter>
+        <counter></counter>
+
+        <!-- 局部组件 -->
+
+        <button-counter></button-counter>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+
+
+    <script>
+        // 组件其实也是一个 Vue 实例，因此它在定义时也会接收：data、methods、生命周期函
+        // 数等
+        //  不同的是组件不会与页面的元素绑定，否则就无法复用了，因此没有 el 属性。
+        //  但是组件渲染需要 html 模板，所以增加了 template 属性，值就是 HTML 模板
+        //  全局组件定义完毕，***任何 vue 实例都可以直接在 HTML 中通过组件名称来使用组件了
+        //  ***data 必须是一个函数，不再是一个对象。
+
+
+        //1、全局声明注册一个组件,定义全局组件，两个参数：1，组件名称。2，组件参数
+        //使用方法就是把组件名变成标签
+        Vue.component("counter", {
+            template: `<button v-on:click="count++">我被点击了 {{count}} 次</button>`,
+            data() {
+                return {
+                    count: 1
+                }
+            }
+        });
+
+        //2、局部声明一个组件（其实就是一个对象，还要把它放到vue中的components中使用）
+        const buttonCounter = {
+            template: `<button v-on:click="count++">我被点击了 {{count}} 次~~~</button>`,
+            data() {
+                return {
+                    count: 1
+                }
+            }
+        };
+        //在Vue中声明的，只能跟页面的特定元素绑定
+        new Vue({
+            el: "#app",
+            data: {
+                count: 1
+            },
+            components: {
+                'button-counter': buttonCounter
+            }
+        })
+    </script>
+</body>
+</html>

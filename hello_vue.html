@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello, {{name}}</h1>
+    </div>
+
+    <script src = "node_modules/vue/dist/vue.js"></script>
+
+    <script>
+        //vue声明的渲染
+        let vm = new Vue({
+            el:"#app",   //vm绑定页面元素
+            data:{
+                name:"Rita"  //vm的数据区，vue的好处是，在控制台更改这个变量，页面会马上改变
+            }
+        })
+        
+        //双向绑定
+        
+    </script>
+
+
+</body>
+</html>

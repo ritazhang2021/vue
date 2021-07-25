@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        
+        <input type="text" v-model="num">
+        <!-- 用v-on可以直接绑定数据进行操作 -->
+        <button v-on:click="num++">关注</button>
+        <button v-on:click="cancle">取消关注</button>
+        <h2>
+            {{name}}，非常帅！！！有{{num}}个人为他点赞。
+        </h2>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 创建 vue 实例
+        let vim = new Vue({
+            el: "#app", // el 即 element，该 vue 实例要渲染的页面元素
+            data: { // 渲染页面需要的数据
+                name: "张三",
+                num: 5
+            },
+            methods:{
+                cancle(){
+                    this.num--;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
